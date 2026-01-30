@@ -11,8 +11,10 @@ function App() {
   const [rows, setRows] = useState([]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleAdd = () => {
@@ -31,33 +33,41 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="app">
       <div className="card">
-        <h1>Add People to Table</h1>
+        <h2>Add People to Table</h2>
         <p className="subtitle">Enter Place, Name, and Age, then click Add.</p>
 
         <div className="inputs">
-          <input
-            type="text"
-            name="place"
-            placeholder="e.g. Mumbai"
-            value={formData.place}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="name"
-            placeholder="e.g. Akash"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            name="age"
-            placeholder="e.g. 24"
-            value={formData.age}
-            onChange={handleChange}
-          />
+          <div>
+            <label>Place</label>
+            <input
+              name="place"
+              placeholder="e.g. Mumbai"
+              value={formData.place}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <label>Name</label>
+            <input
+              name="name"
+              placeholder="e.g. Akash"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <label>Age</label>
+            <input
+              name="age"
+              placeholder="e.g. 24"
+              value={formData.age}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         <div className="buttons">
